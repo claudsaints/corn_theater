@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS users(
+	id SERIAL CONSTRAINT id_nome PRIMARY KEY,
+	nome VARCHAR(150) NOT NULL,
+	email VARCHAR(150) NOT NULL,
+	senha VARCHAR(70) NOT NULL
+	
+);
+
+
+CREATE TABLE IF NOT EXISTS favoritos(
+	id SERIAL CONSTRAINT id_favoritos PRIMARY KEY,
+	id_user SERIAL,
+	id_filme VARCHAR(150) NOT NULL,
+	link_filme CHAR(300) NOT NULL,	
+	desc_filme CHAR(300) NOT NULL,
+	FOREIGN KEY (id_user) REFERENCES users(id)
+	
+);
