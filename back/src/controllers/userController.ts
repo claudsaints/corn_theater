@@ -25,13 +25,16 @@ class UserController {
         const validarmail = await AppDataSource.manager.findOneBy(User,  {email : mail})
         if(validarmail){
             if(bcrypt.compareSync(password, validarmail.senha)){
-                return res.json(gerarTOken(mail));
+                const token =  await gerarTOken({mail});
+                return res.json(token)
             }else{
                 return res.json({"error":"a senha ou email estão incorretos"})
             }
         }else{
             return res.json({"erro":"Usuario não existe"})
         }
+    }public async logout(req:Request,res:Response): Promise <Response> {
+        return res.json({ token: null });
     }
 
     public async list(req: Request, res: Response): Promise<Response> {
@@ -42,9 +45,3 @@ class UserController {
 }
 
 export default new UserController;
-
-/*
-public async list(req: Request, res: Response): Promise<Response> {
-    const users = await AppDataSource.manager.find(User);
-    return res.json(users);
-}*/

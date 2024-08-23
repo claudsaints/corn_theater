@@ -1,12 +1,15 @@
 import { Router } from "express";
 import UserController from '../controllers/userController'
+import { autorizacao } from "../middlewares";
 
 const routes = Router();
 
-routes.post('/', UserController.create );
+routes.post('/cadastro', UserController.create );
 
 routes.get('/login', UserController.login);
 
-routes.get('/', UserController.list);
+routes.post('/logout', UserController.logout);
+
+routes.get('/listar', autorizacao, UserController.list);
 
 export default routes;
