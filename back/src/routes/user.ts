@@ -6,7 +6,7 @@ const routes = Router();
 
 routes.post('/cadastro', UserController.create );
 
-routes.get('/login', UserController.login);
+routes.post('/login', UserController.login);
 
 routes.post('/logout', UserController.logout);
 

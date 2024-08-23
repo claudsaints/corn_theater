@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne } from "typeorm"
-import { User } from "./User"
+import { Users } from "./User"
 @Entity()
 export class Favorite{
 
@@ -18,6 +18,6 @@ export class Favorite{
     @Column()
     imgLink: string
 
-    @ManyToOne(() => User, (user) => user.favorites) user: User;
+    @ManyToOne(() => Users, (user) => user.favorites) user: Users;
 
 }

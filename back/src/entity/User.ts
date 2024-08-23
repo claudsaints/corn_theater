@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column,OneToMany } from "typeorm"
 import { Favorite } from "./Favorite"
 
 @Entity()
-export class User {
+export class Users {
 
     @PrimaryGeneratedColumn()
     id: number
