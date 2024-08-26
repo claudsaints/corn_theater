@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Input from "../Inputs/Inputs";
-import './pad.css'
 import user from "../../services/user";
 import { useState } from "react";
+import { Sbutton } from "../Btn/Sbutton.style";
+import { Scontainer } from "../Container/Scontainer.style";
 
 
 
@@ -14,22 +15,26 @@ export default function Cadpad(){
     
     return(
         <>
-            <div className="container">
+            <Scontainer>
                 <h1>Cadastro</h1>
              
-                <Input class="formput" place="Nome" f={setName}/>
-                <Input class="formput" place="Email" f={setMail}/>
-                <Input class="formput" place="Senha" f={setPass}/>
+                <Input  place="Nome" f={setName}/>
+                <Input  place="Email" f={setMail}/>
+                <Input  place="Senha" f={setPass}/>
 
-                <button onClick={() => {
+                <Sbutton onClick={() => {
                     user.create(name,mail,pass,setStatus);
-                }} className="btn_form">Enviar</button>
+                }}>
+                    Enviar
+
+                </Sbutton>
+   
 
                 <h3>{status}</h3>
 
                 <Link to="/Login"><span> Retornar ao Login </span></Link>
                 
-            </div>
+            </Scontainer>
         </>
     )
 }

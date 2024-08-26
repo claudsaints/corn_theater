@@ -1,12 +1,10 @@
-import Nav from '../components/Nav/Nav';
+import { HomeItens } from "../contexts/contextHome";
+export default function Home() {
 
-export default function Home () {
-    return (
-        <>
-            <Nav/>     
-            <p>hi</p>
-  
-        </>
-      
-    )
+
+  return (
+    <>
+      <HomeItens/>
+    </>
+  );
 }
