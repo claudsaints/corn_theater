@@ -1,7 +1,7 @@
 import { tmdb } from "./api"
 
 export default new class Movie{
-    async buscar(query:string,fun:CallableFunction) {
+    async buscar(query:string | undefined,fun:CallableFunction) {
       tmdb({
         method: 'get',
         url: `https://api.themoviedb.org/3/search/movie`,
@@ -25,6 +25,15 @@ export default new class Movie{
         console.log(err)
 
       })
+
+    }
+    async top_movie(fun:CallableFunction){
+        tmdb.get(`https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1`)
+        .then((res) => {
+          fun(res.data.results);
+        }).catch((err) => {
+          console.log(err);
+        })
 
     }
 

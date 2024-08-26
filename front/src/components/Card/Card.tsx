@@ -8,24 +8,38 @@ export const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #fa5c5c;
+    border-radius: 5px;
+    //align-items: center;
+    background-color: #000000;
     color: blue;
     text-align: center;
     height: 400px;
-    width: 250px;
+    width: 230px;
     margin: 10px;
+    @media (max-width: 600px){
+        
+        margin:2px;
+        height: 200px;
+        width: 100px;
+    }
+    div{
+        margin-top: 10px;
+    }
     img{
+        align-self:center;
+        opacity: 0.4;
+        border: transparent;
         border-radius: 10px;
         height: 80%;
-        width: 100%;
+        width: 90%;
         box-shadow: 5px;
     }
     img:hover{
-        
+        opacity: 1;
     }
+`   
 
-`
+
 
 
 export function Card(props:card){
@@ -38,6 +52,9 @@ export function Card(props:card){
                 <img src={`https://image.tmdb.org/t/p/original${props.moviedata.poster_path}`} alt="img filme" 
                     
                 />
+                <div>
+                    {props.moviedata.title}
+                </div>
             </Link>
             
         </StyledCard>

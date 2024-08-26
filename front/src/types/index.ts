@@ -7,7 +7,14 @@ export interface ContextoProps{
 
 
 }
+export interface ContextoQueryProps{
+    qalvo: string;
+    qdata: Array<JSON>;
+    qsetAlvo: Function;
+    qsetData: Function;
 
+
+}
 export interface TmdbData{
     title: string;
     original_title:string;

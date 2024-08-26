@@ -1,10 +1,12 @@
-import {FaSearch} from 'react-icons/fa'
+
 import { useContext } from "react";
 import styled from "styled-components";
 import { ContextoHome } from "../../contexts/contextHome";
-import { Link } from "react-router-dom";
+import { Link,  useLocation, useNavigate } from "react-router-dom";
 import { Sbutton } from "../Btn/Sbutton.style";
 import Logo from "../Logo/Logo";
+import { ContextoSearch } from '../../contexts/contextSearch';
+
 
 
 export const NavStyle = styled.div`
@@ -20,31 +22,46 @@ export const NavStyle = styled.div`
 
 `
 export function Nav(){
-    const {setAlvo,data} = useContext(ContextoHome);
+    const {setAlvo,alvo} = useContext(ContextoHome);
+    const {qsetAlvo,qalvo} = useContext(ContextoSearch);
 
-    
+    const location = useLocation();
+
+   
+    const navigate = useNavigate();
+
+    const isOnSearch = location.pathname.slice(0,7) === '/Search'
+
+   
+
+
+
 
     return (
         <NavStyle>
             <Logo />
             <div className="forming">
             <button className="search">
-                <FaSearch />
+                <img height='25px' width='25px' src="../search.png"/>
             </button>
             
             <input
                 className="put"
-                onChange={(e) => {
-                setAlvo(e.target.value);
+                onChange={(e) => { 
+                    isOnSearch ? qsetAlvo(e.target.value) : setAlvo(e.target.value);
+                
                 }}
                 onKeyDown={(e) => {
                 if (e.key == "Enter") {
-                    console.log(data)
+
+                    isOnSearch ?  navigate(`/Search/${qalvo}`) :  navigate(`/Search/${alvo}`)
+                    window.location.reload();
+                   
                 }
                 }}
             />
             </div>
-            <Sbutton>
+            <Sbutton >
             <Link to="/Profile">Perfil</Link>{" "}
             </Sbutton>
         </NavStyle>
