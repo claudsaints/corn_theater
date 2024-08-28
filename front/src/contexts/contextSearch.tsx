@@ -43,7 +43,7 @@ export function SearchItens(){
     return(
         <ContextoSearch.Provider value={{qalvo,qdata,qsetAlvo,qsetData}}>
             <Nav/>  
-                <h1>Resultado Da Busca: {query}</h1>
+                
                 <Sdiv>
                     {
                         qdata.map((obj:any) => obj.poster_path ? (<Card moviedata={obj}  /> ): null)
