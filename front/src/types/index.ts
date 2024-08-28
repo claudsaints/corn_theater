@@ -1,20 +1,11 @@
 
 export interface ContextoProps{
     alvo: string;
-    data: Array<JSON>;
+    data: Array<any>;
     setAlvo: Function;
     setData: Function;
-
-
 }
-export interface ContextoQueryProps{
-    qalvo: string;
-    qdata: Array<JSON>;
-    qsetAlvo: Function;
-    qsetData: Function;
 
-
-}
 export interface TmdbData{
     title: string;
     original_title:string;

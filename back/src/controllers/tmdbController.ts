@@ -19,6 +19,10 @@ class Filmes{
             return res.json({"err":"erro ao salvar favorito"});
         }
     }
+    public async listarFavorito(req:Request,res:Response): Promise<Response>{
+        const procurar = await AppDataSource.manager.find(Favorite);
+        return res.json(procurar);
+    }
 
 }
 

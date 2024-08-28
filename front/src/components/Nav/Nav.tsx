@@ -5,7 +5,7 @@ import { ContextoHome } from "../../contexts/contextHome";
 import { Link,  useLocation, useNavigate } from "react-router-dom";
 import { Sbutton } from "../Btn/Sbutton.style";
 import Logo from "../Logo/Logo";
-import { ContextoSearch } from '../../contexts/contextSearch';
+
 
 
 
@@ -68,20 +68,14 @@ nav a:hover {
 `
 export function Nav(){
     const {setAlvo,alvo} = useContext(ContextoHome);
-    const {qsetAlvo,qalvo} = useContext(ContextoSearch);
 
     const location = useLocation();
 
    
     const navigate = useNavigate();
-
-    const isOnSearch = location.pathname.slice(0,7) === '/Search'
+    
 
    
-
-
-
-
     return (
         <NavStyle>
             <Logo />
@@ -89,13 +83,12 @@ export function Nav(){
                 <input
                     className="put"
                     onChange={(e) => { 
-                        isOnSearch ? qsetAlvo(e.target.value) : setAlvo(e.target.value);
+                        setAlvo(e.target.value)
                     
                     }}
                     onKeyDown={(e) => {
                     if (e.key == "Enter") {
-
-                        isOnSearch ?  navigate(`/Search/${qalvo}`) :  navigate(`/Search/${alvo}`)
+                        navigate(`/Search/${alvo}`) 
                         window.location.reload();
                     
                     }

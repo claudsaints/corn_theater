@@ -3,9 +3,8 @@ import { api } from "./api";
 
 export default new class Usuario{
     
-    async create(name:string, mail: string,password: string, fun:CallableFunction){
-        
-        await api.post("http://localhost:3030/usuario/cadastro", { name, mail, password })
+    async create(name:string, mail: string,password: string, fun:CallableFunction){        
+        await api.post("/usuario/cadastro", { name, mail, password })
         .then((res) => {
             return fun(res.data.mensagem);
 
@@ -17,7 +16,7 @@ export default new class Usuario{
     }
     async login( mail:string, password: string, fun:CallableFunction, fun2:CallableFunction){
         console.log(mail)
-        await api.post("http://localhost:3030/usuario/login", {mail, password})
+        await api.post("/usuario/login", {mail, password})
         .then((res) => {
             console.log(res.data)
             localStorage.setItem('token' , res.data.token);

@@ -5,8 +5,6 @@ import Logo from "../components/Logo/Logo";
 export default function Welcome() {
   return (
     <>
-        
-    
       <h1>Welcome</h1>
       <h2>Corn Teether</h2>
       <Logo />
