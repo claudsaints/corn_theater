@@ -1,10 +1,8 @@
 import {  Link, useParams } from "react-router-dom"
-import Loading from "../components/Loading/Loading";
 import movie from '../services/movie'
 import { useEffect, useState } from "react";
-import { Sbutton } from "../components/Btn/Sbutton.style";
+import { Sbutton, Fbutton,MovieSection,Loading, Saling } from "../components/index";
 import { TmdbData } from "../types";
-import { MovieSection } from "../components/MovieSection/MovieSection.styles";
 import Comments from "../components/CommentsSection/Comments";
 
 export default function dataMovie () {
@@ -35,7 +33,14 @@ export default function dataMovie () {
 
 
             <MovieSection>
-            <Sbutton><Link to='/Home'>Voltar</Link></Sbutton>
+                <Saling style={{
+                    height: "30%",
+                    flexDirection: "column"
+                }}>
+                    <Sbutton><Link to='/Home'>Voltar  </Link></Sbutton><br/>
+                    <Fbutton>Favoritar</Fbutton>
+                </Saling>
+            
                 <div>
                     
                 </div>
@@ -56,7 +61,7 @@ export default function dataMovie () {
                 </div>
             </MovieSection>
 
-            <Comments movieId="id" />
+            <Comments movieId={id} />
 
         </>
     )

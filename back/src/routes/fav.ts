@@ -1,12 +1,13 @@
 import {Router} from 'express'
 
 import Filme from '../controllers/tmdbController'
+import { autorizacao } from '../middlewares';
 
 const routes = Router();
 
-routes.get('/', Filme.listarFavorito);
+routes.post('/listar',autorizacao, Filme.listarFavorito);
 
-routes.post('/', Filme.salvarFavorito);
+routes.post('/salvar', autorizacao, Filme.salvarFavorito);
 
 export default routes;
 

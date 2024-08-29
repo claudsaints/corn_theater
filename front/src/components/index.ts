@@ -1,3 +1,4 @@
+import { Fbutton } from "./Btn/Fbutton.style";
 import { Sbutton } from "./Btn/Sbutton.style";
 import { Card } from "./Card/Card";
 import Comments from './CommentsSection/Comments'
@@ -16,6 +17,7 @@ export{
     Sbutton,
     Card,
     Comments,
+    Fbutton,
     Scontainer,
     Footer,
     Input,

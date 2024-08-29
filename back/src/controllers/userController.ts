@@ -29,8 +29,8 @@ class UserController {
 
             const check = bcrypt.compareSync(password, validarmail.senha)
             if(check){
-
-                const token =  await gerarTOken({mail});
+                const {id} = validarmail
+                const token =  await gerarTOken({mail,id});
                 return res.json(token)
             }else{
 
@@ -49,7 +49,7 @@ class UserController {
     }
 
     public async list(req: Request, res: Response): Promise<Response> {
-
+        console.log(res.locals);
         const users = await AppDataSource.manager.find(Users);
         return res.json(users);
         

@@ -10,7 +10,9 @@ export default function Home() {
       <Sdiv>
         {data.map((data) => (data.poster_path ? <Card moviedata={data} /> : null))}
       </Sdiv>
-      <Footer>claudio</Footer>
+      <Footer>
+        @claudsaints
+      </Footer>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column,ManyToOne } from "typeorm"
 import { Users } from "./User"
 @Entity()
-export class Favorite{
+export class Comments{
 
     @PrimaryGeneratedColumn()
     id: number
@@ -9,13 +9,10 @@ export class Favorite{
     @ManyToOne(() => Users, (user) => user.favorites) user: Users;
 
     @Column()
-    movieId: number
+    movie: number
 
     @Column()
-    title: string
-
-    @Column()
-    imgLink: string
+    content: string
 
 
 }

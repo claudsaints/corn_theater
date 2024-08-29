@@ -15,11 +15,9 @@ export default new class Usuario{
         
     }
     async login( mail:string, password: string, fun:CallableFunction, fun2:CallableFunction){
-        console.log(mail)
         await api.post("/usuario/login", {mail, password})
         .then((res) => {
-            console.log(res.data)
-            localStorage.setItem('token' , res.data.token);
+            localStorage.setItem('token' , res.data);
             return fun('/Home')
 
         }).catch((err) => {

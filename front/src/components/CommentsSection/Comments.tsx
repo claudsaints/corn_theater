@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // Styled components
 const CommentsContainer = styled.div`
   margin: 2rem 0;
+  width: 90%;
   padding: 1rem;
   background-color: #1a1a1a;
   border-radius: 8px;
@@ -50,72 +51,58 @@ const CommentItem = styled.li`
 `;
 
 const CommentAuthor = styled.h4`
+  color: white;
   margin: 0;
   font-size: 1rem;
 `;
 
 const CommentText = styled.p`
+  color: darkgrey;
   margin: 0.5rem 0 0;
 `;
 
 // Props interface
 interface Comment {
   id: number;
-  author: string;
-  text: string;
+  content: string;
 }
 
 interface CommentsSectionProps {
   movieId: string;
 }
 
-const CommentsSection = ({ movieId }: CommentsSectionProps) => {
-  const [comments, setComments] = useState<Comment[]>([]);
+
+
+import interaction from '../../services/interaction';
+export function CommentsSection(props:CommentsSectionProps){
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState<string>('');
   
-  useEffect(() => {
-    // Fetch comments for the movie from API
-    fetch(`/api/comments?movieId=${movieId}`)
-      .then(response => response.json())
-      .then(data => setComments(data));
-  }, [movieId]);
+  const inter = interaction.getComments;
+  const postar = interaction.saveComment;
   
-  const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNewComment(event.target.value);
-  };
+  useEffect(() => {
+      inter(setComments,parseInt(props.movieId));
+  },[]);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (newComment.trim() === '') return;
-
-    // Post new comment to API
-    fetch('/api/comments', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ movieId, text: newComment })
-    })
-      .then(response => response.json())
-      .then(data => {
-        setComments(prevComments => [...prevComments, data]);
-        setNewComment('');
-      });
-  };
-
+  
   return (
     <CommentsContainer>
-      <CommentForm onSubmit={handleSubmit}>
-        <CommentInput
-          value={newComment}
-          onChange={handleCommentChange}
+      <CommentForm >
+        <CommentInput onChange={(e) => setNewComment(e.target.value)}
+      
           placeholder="Escreva um comentário..."
         />
-        <SubmitButton type="submit">Enviar Comentário</SubmitButton>
+        <SubmitButton  onClick={() => {
+          postar(parseInt(props.movieId),newComment)
+       
+        }}>Enviar Comentário</SubmitButton>
       </CommentForm>
       <CommentList>
-        {comments.map(comment => (
+        {comments.message ? <div>{comments.message}</div> :comments.map(comment => (
           <CommentItem key={comment.id}>
-            <CommentAuthor>Usuário {comment.id}</CommentAuthor>
-            <CommentText>{comment.text}</CommentText>
+            <CommentAuthor>{comment.user.nome}</CommentAuthor>
+            <CommentText>{comment.content}</CommentText>
           </CommentItem>
         ))}
       </CommentList>
