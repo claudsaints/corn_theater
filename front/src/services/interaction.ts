@@ -2,8 +2,9 @@ import { userInt } from "./api"
 
 
 export default new class Interaction{
-    async saveFavorite(idfilme:number,title:string,imglink:string){
-        userInt.post("/filmes/salvar", {idfilme,title,imglink})
+    async saveFavorite(idfilme:number | any,title:string | undefined,imglink:string | undefined){
+        idfilme = parseInt(idfilme)
+        await userInt.post("/filmes/salvar", {idfilme,title,imglink})
         .then((res) => {
             console.log(res)
         })
@@ -12,11 +13,31 @@ export default new class Interaction{
 
         });
     }
-    async removeFavorite(){
+    async removeFavorite(idfilme:number | any){
+        idfilme = parseInt(idfilme)
+        await userInt.post("/filmes/remover", {idfilme})
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) =>{ 
+            console.log(err)
+        })
+
+    }async checkFavorite(idfilme:number | any, fun:CallableFunction){
+        idfilme = parseInt(idfilme)
+        await userInt.post("/filmes/checar",{idfilme})
+        .then((res) => {
+            console.log(res.data.message)
+            fun(res.data.message)
+        })
+        .catch((err) =>{ 
+            console.log(err)
+        })
+
 
     }
-    async getFavorite(){
-        userInt.post("/filmes/listar")
+    async getAllFavorite(){
+        await userInt.post("/filmes/listar")
         .then((res) => {
             console.log(res)
         })
@@ -26,7 +47,6 @@ export default new class Interaction{
         });
     }
     async saveComment(movieid:number,content:string){
-        console.log("dados: ",movieid,content)
         
         await userInt.post("/comment/criar", {movieid,content})
         .then((res) => {
@@ -40,7 +60,6 @@ export default new class Interaction{
     async getComments(fun:CallableFunction, movieid:number){
         await userInt.post("/comment/buscar",{movieid})
         .then((res) => {
-            console.log(res)
             if(res.data.search){
                 return fun(res.data.search);
             }

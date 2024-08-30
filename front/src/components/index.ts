@@ -12,8 +12,10 @@ import Pad from "./Pad/Pad";
 import Profile from "./ProfileSection/ProfileSection";
 import { Saling } from "./Salign/Salign.styles";
 import { Sdiv } from "./Sdiv/Sdiv";
-
+import { IconStar,IconStarFill } from "./Icons/Icons";
 export{
+    IconStar,
+    IconStarFill,
     Sbutton,
     Card,
     Comments,

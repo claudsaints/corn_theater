@@ -1,13 +1,9 @@
-
 import { useContext } from "react";
 import styled from "styled-components";
 import { ContextoHome } from "../../contexts/contextHome";
-import { Link,  useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sbutton } from "../Btn/Sbutton.style";
 import Logo from "../Logo/Logo";
-
-
-
 
 export const NavStyle = styled.div`
   background-color: #1a1a1a;
@@ -24,85 +20,74 @@ export const NavStyle = styled.div`
   z-index: 1000;
   transition: background-color 0.3s ease;
 
-
-nav:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-nav a {
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 10px 15px;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: rgb(0, 128, 255);
-}
-
-@media (max-width: 768px) {
-  nav {
-    justify-content: space-between;
-    padding: 0 20px;
+  nav:hover {
+    background-color: rgba(0, 0, 0, 0.9);
   }
 
   nav a {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    height: auto;
-    padding: 15px 0;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
   }
 
-  nav a {
-    padding: 10px 0;
-    font-size: 12px;
+  nav a:hover {
+    color: rgb(0, 128, 255);
   }
-}
 
-`
-export function Nav(){
-    const {setAlvo,alvo} = useContext(ContextoHome);
+  @media (max-width: 768px) {
+    nav {
+      justify-content: space-between;
+      padding: 0 20px;
+    }
 
-    const location = useLocation();
+    nav a {
+      font-size: 14px;
+    }
+  }
 
-   
-    const navigate = useNavigate();
-    
+  @media (max-width: 480px) {
+    nav {
+      flex-direction: column;
+      height: auto;
+      padding: 15px 0;
+    }
 
-   
-    return (
-        <NavStyle>
-            <Logo />
-            <div className="forming">
-                <input
-                    className="put"
-                    onChange={(e) => { 
-                        setAlvo(e.target.value)
-                    
-                    }}
-                    onKeyDown={(e) => {
-                    if (e.key == "Enter") {
-                        navigate(`/Search/${alvo}`) 
-                        window.location.reload();
-                    
-                    }
-                    }}
-                />
-                <button className="search">
-                    <img  src="../search.png"/>
-                </button>
-            
-            </div>
-            <Sbutton >
-            <Link to="/Profile">Perfil</Link>{" "}
-            </Sbutton>
-        </NavStyle>
+    nav a {
+      padding: 10px 0;
+      font-size: 12px;
+    }
+  }
+`;
+export function Nav() {
+  const { setAlvo, alvo } = useContext(ContextoHome);
 
-    )
+  const navigate = useNavigate();
+
+  return (
+    <NavStyle>
+      <Logo />
+      <div className="forming">
+        <input
+          className="put"
+          onChange={(e) => {
+            setAlvo(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              navigate(`/Search/${alvo}`);
+              window.location.reload();
+            }
+          }}
+        />
+        <button className="search">
+          <img src="../search.svg" />
+        </button>
+      </div>
+      <Sbutton>
+        <Link to="/Profile">Perfil</Link>{" "}
+      </Sbutton>
+    </NavStyle>
+  );
 }

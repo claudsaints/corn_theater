@@ -4,7 +4,7 @@ const checarCadastro = (req:Request,res:Response,next:NextFunction) => {
 
     const {name, mail, password } = req.body
 
-    if(!name && !mail  && !password){
+    if(!name || !mail  || !password){
 
         return res.json({"erro":"Você Não Forneceu os Dados nescessarios"})
 

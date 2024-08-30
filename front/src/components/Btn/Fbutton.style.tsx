@@ -13,7 +13,7 @@ export const Fbutton = styled.button<Btnprops>`
     width: ${({width}) => width ? width : 'auto'};
     background-image: linear-gradient(to right, rgb(255, 0, 157) 0%, rgb(255, 100, 185) 51%, rgb(255, 0, 157) 100%);
     margin: 20px;
-    padding: 15px 45px;
+    padding: 15px ;
     transition: 0.5s;
     background-size: 200% auto;
     color: #000000;            
@@ -22,9 +22,11 @@ export const Fbutton = styled.button<Btnprops>`
     border: none;
     display: block;
     &:hover{
+        cursor: pointer;
         background-position: right center; /* change the direction of the change here */
         color: #fff;
-        text-decoration: none;
+        text-decoration: none;       
     }
+   
 
 `
