@@ -1,10 +1,11 @@
 import axios, { AxiosInstance } from 'axios'
 
 const key = import.meta.env.VITE_TMDB_KEY
+const url = import.meta.env.VITE_URL
 const {token} = localStorage
 
   export const api: AxiosInstance = axios.create({
-    baseURL: "http://localhost:3030",
+    baseURL: url,
     headers: {
       "Content-Type": "application/json",
       
@@ -19,7 +20,7 @@ const {token} = localStorage
   });
 
   export const userInt: AxiosInstance = axios.create({
-    baseURL: "http://localhost:3030",
+    baseURL: url,
     headers:{
       "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json"  
