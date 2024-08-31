@@ -23,8 +23,9 @@ export default new class Usuario{
         }).catch((err) => {
             return fun2(err.response.data.err);
         });
-          
-        
+    }async logout(){
+        localStorage.clear();
+        window.location.replace('/login')
 
     }
 }

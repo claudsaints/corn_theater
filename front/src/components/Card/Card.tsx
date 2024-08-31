@@ -74,8 +74,8 @@ export function Card(props:card){
 
 
     return(
-        <StyledCard key={props.moviedata.id} >
-            <Link to={`/Movie/${props.moviedata.id}`}>
+        <StyledCard key={props.moviedata.id ? props.moviedata.id : props.moviedata.movieId} >
+            <Link to={`/Movie/${props.moviedata.id ? props.moviedata.id : props.moviedata.movieId}`}>
             
                 <img src={`https://image.tmdb.org/t/p/original${props.moviedata.poster_path}`} alt="img filme" 
                     

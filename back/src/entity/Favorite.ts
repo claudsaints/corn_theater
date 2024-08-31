@@ -4,7 +4,7 @@ import { Users } from "./User"
 export class Favorite{
 
     @PrimaryGeneratedColumn()
-    id: number
+    id_fav: number
 
     @ManyToOne(() => Users, (user) => user.favorites) user: Users;
 
@@ -15,7 +15,7 @@ export class Favorite{
     title: string
 
     @Column()
-    imgLink: string
+    poster_path: string
 
 
 }

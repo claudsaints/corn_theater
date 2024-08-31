@@ -71,9 +71,9 @@ export default function dataMovie() {
                     }}
                 >
                     {bool ? (
-                    <IconStar/>
+                      <IconStarFill />
                     ) : (
-                    <IconStarFill />
+                      <IconStar/>
                     )}
           </Fbutton>
         </Saling>

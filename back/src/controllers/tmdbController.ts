@@ -7,10 +7,10 @@ class Filmes {
         const { id } = res.locals;
 
         const nfav = new Favorite
-        nfav.movieId = idfilme;
-        nfav.user = id;
-        nfav.title = title;
-        nfav.imgLink = imglink;
+            nfav.movieId = idfilme;
+            nfav.user = id;
+            nfav.title = title;
+            nfav.poster_path = imglink;
 
         const fav = await AppDataSource.manager.save(nfav);
 
@@ -25,11 +25,9 @@ class Filmes {
         const { id } = res.locals;
         const favRepos = AppDataSource.getRepository(Favorite);
         try{
-
-            const favorito = await favRepos.findOne({ where: { user: id, movieId: movieid } });
-            if (!favorito.id){
-                return
-            }
+          
+            const favorito = await favRepos.findOneOrFail({ where: { user: id, movieId: movieid } });
+          
             return res.json({"message":true});
         }catch{
             return res.json({"message":false});
@@ -62,7 +60,6 @@ class Filmes {
         }
         return res.json({ "err": "não encontramos esse item" })
     }
-
 }
 
 export default new Filmes;

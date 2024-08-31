@@ -15,7 +15,7 @@ export default new class Interaction{
     }
     async removeFavorite(idfilme:number | any){
         idfilme = parseInt(idfilme)
-        await userInt.post("/filmes/remover", {idfilme})
+        await userInt.post("/filmes/remover", {"movieid":idfilme})
         .then((res) => {
             console.log(res)
         })
@@ -25,7 +25,7 @@ export default new class Interaction{
 
     }async checkFavorite(idfilme:number | any, fun:CallableFunction){
         idfilme = parseInt(idfilme)
-        await userInt.post("/filmes/checar",{idfilme})
+        await userInt.post("/filmes/checar", {"movieid":idfilme})
         .then((res) => {
             console.log(res.data.message)
             fun(res.data.message)
@@ -36,10 +36,10 @@ export default new class Interaction{
 
 
     }
-    async getAllFavorite(){
+    async getAllFavorite(fun:CallableFunction){
         await userInt.post("/filmes/listar")
         .then((res) => {
-            console.log(res)
+            fun(res.data)
         })
         .catch((err) =>{
             console.log(err)

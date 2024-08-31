@@ -100,3 +100,9 @@ h1, h2, h3 {
     padding-left: 35px; /* Ajuste para telas menores */
   }
 }
+.spanGood{
+  color: rgb(23, 226, 23);
+}
+.spanBad{
+  color: rgb(231, 28, 13);
+}

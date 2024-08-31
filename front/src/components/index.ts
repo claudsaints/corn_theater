@@ -13,6 +13,7 @@ import Profile from "./ProfileSection/ProfileSection";
 import { Saling } from "./Salign/Salign.styles";
 import { Sdiv } from "./Sdiv/Sdiv";
 import { IconStar,IconStarFill } from "./Icons/Icons";
+import ProfileHeader from "./ProfileHeader/ProfileHeader";
 export{
     IconStar,
     IconStarFill,
@@ -29,5 +30,6 @@ export{
     Pad,
     Profile,
     Saling,
-    Sdiv
+    Sdiv,
+    ProfileHeader
 }
