@@ -22,6 +22,7 @@ export const Sbutton = styled.button<Btnprops>`
     border: none;
     display: block;
     &:hover{
+        cursor: pointer;
         background-position: right center; /* change the direction of the change here */
         color: #fff;
         text-decoration: none;

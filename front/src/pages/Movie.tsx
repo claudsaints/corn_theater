@@ -1,20 +1,23 @@
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import movie from "../services/movie";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Sbutton,
   Fbutton,
   MovieSection,
-  Loading,
   Saling,
   IconStar,
   IconStarFill,
-  Comments
+  Comments,
+  Footer,
+  IconGithub,
+  IconLinkedin
 } from "../components/index";
 import { TmdbData } from "../types";
 
 import interaction from "../services/interaction";
+import { ContextoHome } from "../contexts/contextHome";
 
 export default function dataMovie() {
   //parametro url
@@ -24,17 +27,20 @@ export default function dataMovie() {
   const checkfav = interaction.checkFavorite;
   const removeFav = interaction.removeFavorite;
   const addFav = interaction.saveFavorite;
-
+  const { setLoading} = useContext(ContextoHome);
   const [dataMovie, setDatadataMovie] = useState<TmdbData>();
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const [bool, setBool] = useState(false);
+  if(!dataMovie){
+    setLoading(true)
+  }
 
   useEffect(() => {
     tmovie(id, setDatadataMovie);
     checkfav(id, setBool);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
   }, []);
 
   const isFavorite = () => {
@@ -44,10 +50,7 @@ export default function dataMovie() {
       addFav(id, dataMovie?.title, dataMovie?.poster_path);
     }
   };
-
-  if (loading) {
-    return <Loading />;
-  }
+  
 
   return (
     <>
@@ -58,8 +61,12 @@ export default function dataMovie() {
             flexDirection: "column",
           }}
         >
-          <Sbutton>
-            <Link to="/Home">Voltar </Link>
+          <Sbutton onClick={() =>{
+            navigate(-1)
+            
+          }
+          }>
+            Voltar 
             </Sbutton>
               
                 <Fbutton
@@ -84,7 +91,7 @@ export default function dataMovie() {
         <div>
           <div>
             <h1>{dataMovie?.title}</h1>
-            <h3>Titulo Original: {dataMovie?.original_title}</h3>
+            <h3>Título Original: {dataMovie?.original_title}</h3>
             <p>Tempo de exibição: {dataMovie?.runtime} minutos</p>
             <p>Data de lançamento: {dataMovie?.release_date}</p>
           </div>
@@ -96,6 +103,17 @@ export default function dataMovie() {
       </MovieSection>
 
       <Comments movieId={id}  />
+
+      <Footer>
+        
+        <Link to="https://github.com/claudsaints">
+          <IconGithub/>
+        </Link>
+        <Link to="https://br.linkedin.com/in/claudio-d-5b78b9260">
+          <IconLinkedin/>
+        </Link>
+        @claudsaints
+      </Footer>
     </>
   );
 }

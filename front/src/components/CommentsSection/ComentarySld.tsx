@@ -9,7 +9,7 @@ const CommentsContainer = styled.div`
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
-const CommentForm = styled.form`
+const CommentForm = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;

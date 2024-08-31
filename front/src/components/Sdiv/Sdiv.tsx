@@ -22,11 +22,11 @@ export const Sdiv = styled.div`
   @media (max-width: 574px) {
     padding: 2px;
     grid-template-columns: repeat(2, minmax(100px, 1fr)); /* Ajuste para dispositivos pequenos */
-    margin-top: 60px; /* Ajuste o espaço superior */
+    margin-top: 70px; /* Ajuste o espaço superior */
   }
 
   @media (max-width: 400px) {
     grid-template-columns: repeat(1, minmax(80px, 1fr)); /* Para telas muito pequenas */
-    margin-top: 50px; /* Ajuste o espaço superior */
+    margin-top: 70px; /* Ajuste o espaço superior */
   }
 `

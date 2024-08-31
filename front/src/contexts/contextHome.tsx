@@ -30,7 +30,7 @@ export function HomeItens({children}:any){
     }
 
     return(
-        <ContextoHome.Provider value={{alvo,data,setAlvo,setData}}>
+        <ContextoHome.Provider value={{alvo,data,setAlvo,setData,loading,setLoading}}>
            {children}     
         </ContextoHome.Provider>
     )

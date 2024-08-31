@@ -5,7 +5,7 @@ import { autorizacao } from '../middlewares';
 
 const routes = Router();
 
-routes.post('/listar',autorizacao, Filme.listarFavorito);
+routes.get('/listar',autorizacao, Filme.listarFavorito);
 
 routes.post('/salvar', autorizacao, Filme.salvarFavorito);
 

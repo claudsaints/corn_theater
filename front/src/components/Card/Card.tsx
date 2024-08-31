@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { ContextoHome } from "../../contexts/contextHome";
+
 import styled from "styled-components";
 import { card } from "../../types";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 export const StyledCard = styled.div`
   display: flex;

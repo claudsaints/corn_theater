@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { ContextoHome } from "../../contexts/contextHome";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { Sbutton } from "../Btn/Sbutton.style";
 import Logo from "../Logo/Logo";
 

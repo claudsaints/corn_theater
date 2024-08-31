@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Card, Footer, Nav, Saling, Sdiv } from "../components/index";
+import { Card, Footer, Nav, Saling, Sdiv,IconGithub,IconLinkedin } from "../components/index";
 import { ContextoHome } from "../contexts/contextHome";
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,13 @@ export default function Home() {
         {data.map((data) => (data.poster_path ? <Card moviedata={data} /> : null))}
       </Sdiv>
       <Footer>
+        
+        <Link to="https://github.com/claudsaints">
+          <IconGithub/>
+        </Link>
+        <Link to="https://br.linkedin.com/in/claudio-d-5b78b9260">
+          <IconLinkedin/>
+        </Link>
         @claudsaints
       </Footer>
     </>

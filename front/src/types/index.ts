@@ -2,6 +2,8 @@
 export interface ContextoProps{
     alvo: string;
     data: Array<any>;
+    loading: boolean;
+    setLoading: Function;
     setAlvo: Function;
     setData: Function;
 }
@@ -20,3 +22,11 @@ export interface TmdbData{
 export interface card{
     moviedata: any;
 }
+
+export interface Movie {
+    imgLink:string;
+    movieId:number;
+    title:string;
+  
+  }
+  

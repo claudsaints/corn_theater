@@ -26,7 +26,9 @@ class Filmes {
         const favRepos = AppDataSource.getRepository(Favorite);
         try{
           
-            const favorito = await favRepos.findOneOrFail({ where: { user: id, movieId: movieid } });
+            const favorito = await favRepos.findOneOrFail({ where: { user: {
+                id: id
+            }, movieId: movieid } });
           
             return res.json({"message":true});
         }catch{
@@ -35,15 +37,20 @@ class Filmes {
     }
     public async listarFavorito(req: Request, res: Response): Promise<Response> {
         const { id } = res.locals
-        const procurar = await AppDataSource.manager.find(Favorite, {
-            where: {
-                user: id
+        const favRepos = AppDataSource.getRepository(Favorite);
+        try{
+            const procurar = await favRepos.find( { where: { user : {id : id}}});
+            if(procurar.length == 0){
+                return res.status(400).json({ "err": "usuário não tem favorito" })
+
             }
-        });
-        if (procurar) {
             return res.json(procurar);
+
+        }catch{
+            return res.status(404).json({ "err": "não foi possivel verificar" })
+
         }
-        return res.status(400).json({ "err": "usuário não tem favorito" })
+     
     } public async removerFavorito(req: Request, res: Response): Promise<Response> {
         const { movieid } = req.body;
         const { id } = res.locals;

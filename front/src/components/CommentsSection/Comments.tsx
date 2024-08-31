@@ -1,4 +1,4 @@
-import { useState, useEffect, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import {
   CommentAuthor,
   CommentForm,
@@ -16,7 +16,14 @@ import {
 // Props interface
 
 interface comments{
-  id: Key | null | undefined; user: { nome: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; content: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 
+ message:string;
+ user: {
+  nome:string;
+ };
+ id: string;
+ content:string;
+ nome:string;
+
 }
 
 
@@ -30,15 +37,25 @@ interface CommentsSectionProps {
 import interaction from '../../services/interaction';
 
 export function CommentsSection(props:CommentsSectionProps){
-  const [comments, setComments] = useState <Array<any> >([]);
+  const [comments, setComments] = useState <comments[] | any>([]);
   const [newComment, setNewComment] = useState<string>('');
-  
+  const [btnstatus,setBtnStatus] = useState("Enviar Comentário")
+
   const inter = interaction.getComments;
   const postar = interaction.saveComment;
+
+  const alterar =() => {
+    setBtnStatus("Enviado!!!")
+    setTimeout(() => {
+      setBtnStatus("Enviar Comentário")
+    },1000)
+  }
   
   useEffect(() => {
       inter(setComments,parseInt(props.movieId));
-  },[]);
+  },[comments]);
+
+
 
   
   return (
@@ -50,14 +67,14 @@ export function CommentsSection(props:CommentsSectionProps){
         />
         <SubmitButton  onClick={() => {
           postar(parseInt(props.movieId),newComment)
-       
-        }}>Enviar Comentário</SubmitButton>
+          alterar();
+        }}>{btnstatus}</SubmitButton>
       </CommentForm>
       <CommentList>
-        {comments.message ? <div>{comments.message}</div> :comments.map((comment: comments) => (
-          <CommentItem key={comment.id}>
-            <CommentAuthor>{comment.user.nome}</CommentAuthor>
-            <CommentText>{comment.content}</CommentText>
+        {comments && comments.message ? <div>{comments.message}</div> :comments.map((comments:comments) => (
+          <CommentItem key={comments.id}>
+            <CommentAuthor>{comments.user.nome}</CommentAuthor>
+            <CommentText>{comments.content}</CommentText>
           </CommentItem>
         ))}
       </CommentList>

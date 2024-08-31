@@ -12,11 +12,15 @@ import Pad from "./Pad/Pad";
 import Profile from "./ProfileSection/ProfileSection";
 import { Saling } from "./Salign/Salign.styles";
 import { Sdiv } from "./Sdiv/Sdiv";
-import { IconStar,IconStarFill } from "./Icons/Icons";
+import { IconStar,IconStarFill,IconGithub,IconLinkedin } from "./Icons/Icons";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
+import { NavStyle } from "./Nav/Nav";
 export{
+    NavStyle,
     IconStar,
     IconStarFill,
+    IconGithub,
+    IconLinkedin,
     Sbutton,
     Card,
     Comments,
