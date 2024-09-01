@@ -1,17 +1,29 @@
 import { Link } from "react-router-dom";
 import { Sbutton } from "../components/Btn/Sbutton.style";
-import Logo from "../components/Logo/Logo";
+import { ContainerWelcome, Title, Descricao, FeaturesList, Feature } from "../components";
+
+
 
 export default function Welcome() {
   return (
     <>
-      <h1>Welcome</h1>
-      <h2>Corn Teether</h2>
-      <Logo />
-
-      <Sbutton>
-        <Link to="/Login">Vamos Lá</Link>
-      </Sbutton>
+      <ContainerWelcome>
+        <Title>Bem-vindo ao Corn Theater!</Title>
+        <Descricao>
+          Descubra novos filmes, adicione aos seus favoritos e compartilhe suas
+          opiniões com a comunidade.
+        </Descricao>
+        <FeaturesList>
+          <Feature>Explore informações detalhadas sobre filmes.</Feature>
+          <Feature>
+            Adicione filmes aos seus favoritos para acessá-los rapidamente.
+          </Feature>
+          <Feature>Comente e veja o que outros usuários estão dizendo.</Feature>
+        </FeaturesList>
+        <Sbutton>
+          <Link to="/Login">Vamos Lá</Link>
+        </Sbutton>
+      </ContainerWelcome>
     </>
   );
 }

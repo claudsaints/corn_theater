@@ -2,7 +2,7 @@ import { Fbutton } from "./Btn/Fbutton.style";
 import { Sbutton } from "./Btn/Sbutton.style";
 import { Card } from "./Card/Card";
 import Comments from './CommentsSection/Comments'
-import { Scontainer } from "./Container/Scontainer.style";
+import { Scontainer, ContainerWelcome,Descricao,Feature,FeaturesList,Title} from "./Container/Scontainer.style";
 import { Footer } from "./Footer/Footer";
 import Input from "./Inputs/Inputs";
 import Loading from "./Loading/Loading";
@@ -16,6 +16,11 @@ import { IconStar,IconStarFill,IconGithub,IconLinkedin } from "./Icons/Icons";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import { NavStyle } from "./Nav/Nav";
 export{
+    ContainerWelcome,
+    Descricao,
+    Feature,
+    FeaturesList,
+    Title,
     NavStyle,
     IconStar,
     IconStarFill,

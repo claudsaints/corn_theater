@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const Scontainer = styled.div`
+const Scontainer = styled.div`
      display: flex;
     margin: auto;
     align-items: center;
@@ -34,3 +34,50 @@ export const Scontainer = styled.div`
 
 
 `
+
+const ContainerWelcome = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 20px;
+  color: #fff;
+  text-align: center;
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+  margin-bottom: 20px;
+`;
+
+const Descricao = styled.p`
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+`;
+
+
+const FeaturesList = styled.ul`
+  margin: 40px 0;
+  text-align: left;
+  list-style: none;
+`;
+
+const Feature = styled.li`
+  font-size: 1.2rem;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "✓";
+    color: #001aff;
+    margin-right: 10px;
+  }
+`;
+
+export{Scontainer,
+    ContainerWelcome,
+    Descricao,Feature,FeaturesList,Title
+}

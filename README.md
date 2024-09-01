@@ -1,1 +1,1 @@
-# aplição web para avaliação de filmes
+# aplicação web para avaliação de filmes

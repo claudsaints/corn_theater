@@ -17,7 +17,7 @@ export const Sbutton = styled.button<Btnprops>`
     transition: 0.5s;
     background-size: 200% auto;
     color: #000000;            
-    box-shadow: 0 0 2px #1a1616;
+    box-shadow: 0 0 2px #1a161681;
     border-radius: 10px;
     border: none;
     display: block;
