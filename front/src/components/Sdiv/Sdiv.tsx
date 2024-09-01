@@ -11,7 +11,7 @@ export const Sdiv = styled.div`
   gap: 20px; /* Adiciona espaçamento entre os elementos */
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(4, minmax(150px, 1fr)); /* Ajuste para tablets */
+    grid-template-columns: repeat(3, minmax(150px, 0.5fr)); /* Ajuste para tablets */
   }
 
   @media (max-width: 768px) {
@@ -22,11 +22,12 @@ export const Sdiv = styled.div`
   @media (max-width: 574px) {
     padding: 2px;
     grid-template-columns: repeat(2, minmax(100px, 1fr)); /* Ajuste para dispositivos pequenos */
-    margin-top: 70px; /* Ajuste o espaço superior */
+    margin-top: 90px; /* Ajuste o espaço superior */
   }
 
-  @media (max-width: 400px) {
-    grid-template-columns: repeat(1, minmax(80px, 1fr)); /* Para telas muito pequenas */
-    margin-top: 70px; /* Ajuste o espaço superior */
+  @media (max-width: 350px) {
+    grid-template-columns: repeat(1, minmax(100px, 1fr)); /* Para telas muito pequenas */
+    margin-top: 90px; /* Ajuste o espaço superior */
+
   }
 `

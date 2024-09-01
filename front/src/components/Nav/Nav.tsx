@@ -58,6 +58,13 @@ export const NavStyle = styled.div`
       padding: 10px 0;
       font-size: 12px;
     }
+    button{
+      padding: 2px ;
+      border-radius: 3px;
+    }
+    .logo{
+      display: none;
+    }
   }
 `;
 export function Nav() {

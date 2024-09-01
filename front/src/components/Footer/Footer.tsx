@@ -6,7 +6,6 @@ export const Footer = styled.div`
     display: flex;
     color: white;
     align-items: center;
-    padding: 1rem;
     justify-content: space-around;
     width: 100%;
     height: 100px;   
