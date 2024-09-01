@@ -31,9 +31,7 @@ export default function dataMovie() {
   const [dataMovie, setDatadataMovie] = useState<TmdbData>();
   const navigate = useNavigate();
   const [bool, setBool] = useState(false);
-  if(!dataMovie){
-    setLoading(true)
-  }
+  
 
   useEffect(() => {
     tmovie(id, setDatadataMovie);
