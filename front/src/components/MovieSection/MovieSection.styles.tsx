@@ -16,11 +16,6 @@ export const MovieSection = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   align-items: flex-start;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  }
-
   div {
     align-self: center;
   }

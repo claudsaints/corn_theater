@@ -3,30 +3,31 @@ import styled from 'styled-components'
 interface Btnprops{
     height?: string;
     width?: string;
+    bgcolor?: string;
+    hcolor?: string;
 }
 
-export const Fbutton = styled.button<Btnprops>`
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
+export const Button = styled.button<Btnprops>`
     height: ${({height}) => height ? height : 'auto'};
     width: ${({width}) => width ? width : 'auto'};
-    background-image: linear-gradient(to right, rgb(255, 0, 157) 0%, rgb(255, 100, 185) 51%, rgb(255, 0, 157) 100%);
+    font-weight: bold;
+    background-color: ${({bgcolor}) => bgcolor ? bgcolor : 'rgb(0, 128, 255)'};
     margin: 20px;
-    padding: 15px ;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: #000000;            
-    box-shadow: 0 0 2px #1a1616;
+    box-shadow: 0 0 2px #1a161681;
     border-radius: 10px;
     border: none;
     display: block;
     &:hover{
         cursor: pointer;
         background-position: right center; /* change the direction of the change here */
-        color: #fff;
-        text-decoration: none;       
+        color: ${({hcolor}) => hcolor ? hcolor :'#fff'};
+        text-decoration: none;
     }
-   
 
 `

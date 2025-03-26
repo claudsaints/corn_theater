@@ -2,11 +2,9 @@
 import styled from "styled-components";
 import { card } from "../../types";
 import { Link} from "react-router-dom";
+import { useMemo } from "react";
 
 export const StyledCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   border-radius: 10px;
   background-color: #1a1a1a;
@@ -19,16 +17,19 @@ export const StyledCard = styled.div`
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
+
 
   @media (max-width: 600px) {
     margin: 5px;
-    height: 250px;
-    width: 150px;
-    padding: 5px;
+ 
+    width:100%;
+ 
+
+
+    div {
+      font-size: 0.9rem;
+    }
+
   }
 
   div {
@@ -54,16 +55,7 @@ export const StyledCard = styled.div`
     border: 2px solid #007bff;
   }
 
-  @media (max-width: 600px) {
-    img {
-      height: 70%;
-      width: 80%;
-    }
-
-    div {
-      font-size: 0.9rem;
-    }
-  }
+ 
 `   
 
 
@@ -71,7 +63,7 @@ export const StyledCard = styled.div`
 
 export function Card(props:card){
 
-
+    const renderCards = useMemo(() =>{
     return(
         <StyledCard key={props.moviedata.id ? props.moviedata.id : props.moviedata.movieId} >
             <Link to={`/Movie/${props.moviedata.id ? props.moviedata.id : props.moviedata.movieId}`}>
@@ -86,5 +78,7 @@ export function Card(props:card){
             
         </StyledCard>
     )
+  },[props])
+  return renderCards
 
 }

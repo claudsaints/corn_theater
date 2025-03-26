@@ -13,6 +13,7 @@ const {token} = localStorage
   });
   
   export const tmdb: AxiosInstance = axios.create({
+    baseURL: "https://api.themoviedb.org/3",
     headers: {
       "Accept": "application/json",
       "Authorization": key

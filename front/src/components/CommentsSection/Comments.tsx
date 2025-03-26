@@ -6,7 +6,7 @@ import {
   CommentItem,
   CommentList,
   CommentText,
-  CommentsContainer,
+  CommentContainer,
   SubmitButton
 
 } from './ComentarySld'
@@ -59,7 +59,7 @@ export function CommentsSection(props:CommentsSectionProps){
 
   
   return (
-    <CommentsContainer>
+    <CommentContainer>
       <CommentForm >
         <CommentInput onChange={(e) => setNewComment(e.target.value)}
       
@@ -78,7 +78,7 @@ export function CommentsSection(props:CommentsSectionProps){
           </CommentItem>
         ))}
       </CommentList>
-    </CommentsContainer>
+    </CommentContainer>
   );
 };
 

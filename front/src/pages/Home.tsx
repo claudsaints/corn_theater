@@ -1,9 +1,21 @@
-import { useContext } from "react";
-import { Card, Footer, Nav, Saling, Sdiv,IconGithub,IconLinkedin } from "../components/index";
+import { useContext, useEffect } from "react";
+import { Card, Nav, Saling, Div, PageHandler } from "../components/index";
 import { ContextoHome } from "../contexts/contextHome";
 import { Link } from "react-router-dom";
+import movie from "../services/movie";
+import { TmdbDefault } from "../types";
 
 export default function Home() {
+  const {setData,page,data} = useContext(ContextoHome);
+
+  useEffect(() => {
+    const setMovieData = async() => {
+          let topMovies:Promise<TmdbDefault> = await movie.top_movie(page);
+          setData(topMovies)
+    }
+    setMovieData()
+  },[page])
+
   const isauth = localStorage.getItem("token")
   if(!isauth){
     return (
@@ -16,23 +28,14 @@ export default function Home() {
 
     )
   }
-  const { data } = useContext(ContextoHome);
+
   return (
     <>
       <Nav />
-      <Sdiv>
-        {data.map((data) => (data.poster_path ? <Card moviedata={data} /> : null))}
-      </Sdiv>
-      <Footer>
-        
-        <Link to="https://github.com/claudsaints">
-          <IconGithub/>
-        </Link>
-        <Link to="https://br.linkedin.com/in/claudio-d-5b78b9260">
-          <IconLinkedin/>
-        </Link>
-        @claudsaints
-      </Footer>
+      <Div>
+        {data?.results.map((data) => (data.poster_path ? <Card moviedata={data} key={data.id}/> : null))}
+      </Div>
+      <PageHandler/>
     </>
   );
 }

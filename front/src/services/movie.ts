@@ -1,41 +1,54 @@
-import { tmdb } from "./api"
+import { tmdb } from "./api";
+import { tryCatch } from "../utils/tryCatch";
+import { TmdbDefault } from "../types";
 
-export default new class Movie{
-    async buscar(query:string | undefined,fun:CallableFunction) {
-      await tmdb({
-        method: 'get',
-        url: `https://api.themoviedb.org/3/search/movie`,
-        params: {
-          query: query,
-          language: 'pt-BR'
-
-        }
-      }).then((res) => {
-          fun(res.data.results)
-      }).catch((err)=> {
-        console.log(err)
-
-      })
-
+class Movie {
+  async buscar(query: string,page?:number):Promise<any> {
+    const payload = {
+      method: "get",
+      url: `/search/movie`,
+      params: {
+        query: query,
+        page: page? page : 1,
+        language: "pt-BR",
+      },
     }
-    async buscar_id(id:string | undefined,fun:CallableFunction) {
-      await tmdb.get(`https://api.themoviedb.org/3/movie/${id}?language=pt-BR`).then((res) => {
-          fun(res.data)
-      }).catch((err)=> {
-        console.log(err)
+    const {data, error} = await tryCatch<TmdbDefault>(
+      tmdb(payload)
+    );
 
-      })
+    if(error) {
+      console.log(error)
+      return
+    }; 
+    return data
+  }
+  async buscar_id(id: string):Promise<any> {
+    const {data,error} = await tryCatch(
+      tmdb.get(`/movie/${id}?language=pt-BR`
+    )) ;
 
-    }
-    async top_movie(fun:CallableFunction){
-        await tmdb.get(`https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1`)
-        .then((res) => {
-          fun(res.data.results);
-        }).catch((err) => {
-          console.log(err);
-        })
+    if(error) {
 
-    }
+      return
+      
+    }; 
 
+    return data
+  
+  }
+  async top_movie(page?:number): Promise<any>{
+   const {data, error} = await tryCatch<TmdbDefault>(tmdb.get(`/movie/top_rated?language=pt-BR&page=${page? page : 1}`))
 
-}
+   
+   if(error) {
+    console.log(error)
+    return 
+    
+  }; 
+
+   return data
+  }
+};
+
+export default new Movie;

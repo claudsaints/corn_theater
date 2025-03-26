@@ -2,9 +2,9 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { ContextoHome } from "../../contexts/contextHome";
 import { Link,  useNavigate } from "react-router-dom";
-import { Sbutton } from "../Btn/Sbutton.style";
+import { IoSearch } from "react-icons/io5";
 import Logo from "../Logo/Logo";
-
+import { CgProfile } from "react-icons/cg";
 export const NavStyle = styled.div`
   background-color: #1a1a1a;
   border-bottom: 2px solid rgb(0, 128, 255);
@@ -89,12 +89,12 @@ export function Nav() {
           }}
         />
         <button className="search">
-          <img src="../search.svg" />
+          <IoSearch color="#1a1a1a" size={40}/>
         </button>
       </div>
-      <Sbutton>
-        <Link to="/Profile">Perfil</Link>{" "}
-      </Sbutton>
+      <Link to="/profile">
+        <CgProfile size={42} color="white" />
+      </Link>
     </NavStyle>
   );
 }

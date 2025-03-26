@@ -1,7 +1,7 @@
 import Loading from "../components/Loading/Loading";
 import { createContext, useEffect, useState } from "react";
-import { ContextoProps } from "../types";
-import movie from "../services/movie";
+import { ContextoProps, TmdbDefault } from "../types";
+
 
 
 export const ContextoHome = createContext({} as ContextoProps);
@@ -9,18 +9,16 @@ export const ContextoHome = createContext({} as ContextoProps);
 
 
 export function HomeItens({children}:any){
+    const [page,setPage] = useState<number>(1)
     const [alvo,setAlvo]= useState("")
-    const [data,setData] = useState ([]);
+    const [data,setData] = useState<TmdbDefault | undefined>();
     const [loading,setLoading] = useState(true);
 
-    //chama os filmes mais populares na home page
-    const tmovies = movie.top_movie;
 
-    useEffect(() => {
-        tmovies(setData);
+    useEffect( () => {
         setTimeout(() => {
             setLoading(false);
-        },1000)
+        },50)
     },[]);
     
     if(loading){
@@ -30,7 +28,7 @@ export function HomeItens({children}:any){
     }
 
     return(
-        <ContextoHome.Provider value={{alvo,data,setAlvo,setData,loading,setLoading}}>
+        <ContextoHome.Provider value={{alvo,data,setAlvo,setData,loading,setLoading,page,setPage}}>
            {children}     
         </ContextoHome.Provider>
     )

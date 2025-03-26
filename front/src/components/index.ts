@@ -1,9 +1,8 @@
-import { Fbutton } from "./Btn/Fbutton.style";
-import { Sbutton } from "./Btn/Sbutton.style";
+
+import { Button } from "./Btn/Button.style";
 import { Card } from "./Card/Card";
 import Comments from './CommentsSection/Comments'
-import { Scontainer, ContainerWelcome,Descricao,Feature,FeaturesList,Title} from "./Container/Scontainer.style";
-import { Footer } from "./Footer/Footer";
+import { Container, ContainerWelcome,Descricao,Feature,FeaturesList,Title} from "./Container/Container.style";
 import Input from "./Inputs/Inputs";
 import Loading from "./Loading/Loading";
 import { MovieSection } from "./MovieSection/MovieSection.styles";
@@ -11,10 +10,12 @@ import { Nav } from "./Nav/Nav";
 import Pad from "./Pad/Pad";
 import Profile from "./ProfileSection/ProfileSection";
 import { Saling } from "./Salign/Salign.styles";
-import { Sdiv } from "./Sdiv/Sdiv";
+import { Div } from "./Div/Div";
 import { IconStar,IconStarFill,IconGithub,IconLinkedin } from "./Icons/Icons";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import { NavStyle } from "./Nav/Nav";
+import PageHandler from "./PageHandler/PageHandler";
+import { LoadingSpinner } from "./LoadingSpiner";
 export{
     ContainerWelcome,
     Descricao,
@@ -26,12 +27,10 @@ export{
     IconStarFill,
     IconGithub,
     IconLinkedin,
-    Sbutton,
+    Button,
     Card,
     Comments,
-    Fbutton,
-    Scontainer,
-    Footer,
+    Container,
     Input,
     Loading,
     MovieSection,
@@ -39,6 +38,8 @@ export{
     Pad,
     Profile,
     Saling,
-    Sdiv,
-    ProfileHeader
+    Div,
+    ProfileHeader,
+    PageHandler,
+    LoadingSpinner 
 }

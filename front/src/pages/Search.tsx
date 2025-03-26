@@ -1,24 +1,27 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Card, Footer, Nav, Sdiv, Loading } from "../components/index";
+import { Card, Nav, Div, Loading, PageHandler } from "../components/index";
 import { ContextoHome } from "../contexts/contextHome";
-import movie from "../services/movie";
+import Movie from "../services/movie";
+import { TmdbDefault } from "../types";
 
 export default function Search() {
-  const { data, setData } = useContext(ContextoHome);
+  const { data, setData, page } = useContext(ContextoHome);
   const [loading, setLoading] = useState(true);
 
   const { query } = useParams();
 
-  //caregamento da api
-
-  const tmovies = movie.buscar;
+  
   useEffect(() => {
-    tmovies(query, setData);
+    const setMovieData = async () => {
+      let topMovies: Promise<TmdbDefault> = await Movie.buscar(query ? query : "", page);
+      setData(topMovies);
+    };
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, []);
+    setMovieData();
+  }, [page]);
 
   //definir loading booleano
   if (loading) {
@@ -29,12 +32,12 @@ export default function Search() {
     <>
       <Nav />
 
-      <Sdiv>
-        {data.map((obj: any) =>
-          obj.poster_path ? <Card moviedata={obj} /> : null
+      <Div>
+        {data?.results.map((data) =>
+          data.poster_path ? <Card moviedata={data} key={data.id} /> : null
         )}
-      </Sdiv>
-      <Footer>claudio</Footer>
+      </Div>
+      <PageHandler/>
     </>
   );
 }

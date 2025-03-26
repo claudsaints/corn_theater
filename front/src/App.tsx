@@ -14,6 +14,7 @@ export default function App(){
                 <Route path='/Search/:query' element={<Search/>}/>
                 <Route path='/Movie/:id' element={<Movie/>}/>
                 <Route path='/Profile' element={<Profile/>}/>               
+                <Route path='*' element={<Welcome/>}/>
             </Routes>
         </BrowserRouter>
       </HomeItens>

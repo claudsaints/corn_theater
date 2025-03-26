@@ -29,16 +29,19 @@ body {
 }
 
 a {
-  text-decoration: none;
+  
   color: azure;
+  
 }
 
 span {
-  font-weight: bold;
+  font-weight: lighter;
+  text-transform: lowercase;
 }
 
 h1, h2, h3 {
   text-align: center;
+  text-transform: uppercase;
   font-weight: bold;
   color: white;
   margin: 15px;
@@ -82,7 +85,7 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
   .forming {
-    width: 90%;
+    width: 80%;
   }
 
   .put {
@@ -92,8 +95,8 @@ h1, h2, h3 {
 
 @media (max-width: 480px) {
   .forming {
-    width: 100%;
-    padding: 15px;
+    width: 80%;
+    padding: 10px;
   }
 
   .put {

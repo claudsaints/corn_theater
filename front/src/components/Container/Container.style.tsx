@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-const Scontainer = styled.div`
+const Container = styled.div`
      display: flex;
     margin: auto;
     align-items: center;
@@ -17,10 +17,7 @@ const Scontainer = styled.div`
     border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
-    &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.5);
-    }
+
 
     @media (max-width: 768px) {
         width: 80%;
@@ -77,7 +74,7 @@ const Feature = styled.li`
   }
 `;
 
-export{Scontainer,
+export{Container,
     ContainerWelcome,
     Descricao,Feature,FeaturesList,Title
 }

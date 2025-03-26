@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sbutton } from "../components/Btn/Sbutton.style";
+import { Button } from "../components/Btn/Button.style";
 import { ContainerWelcome, Title, Descricao, FeaturesList, Feature } from "../components";
 
 
@@ -20,9 +20,9 @@ export default function Welcome() {
           </Feature>
           <Feature>Comente e veja o que outros usuários estão dizendo.</Feature>
         </FeaturesList>
-        <Sbutton>
+        <Button>
           <Link to="/Login">Vamos Lá</Link>
-        </Sbutton>
+        </Button>
       </ContainerWelcome>
     </>
   );

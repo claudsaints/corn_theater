@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const CommentsContainer = styled.div`
+const CommentContainer = styled.div`
   margin: 2rem 0;
   width: 90%;
   padding: 1rem;
@@ -67,7 +67,7 @@ export {
     CommentItem,
     CommentList,
     CommentText,
-    CommentsContainer,
+    CommentContainer,
     SubmitButton
 
 

@@ -1,29 +1,25 @@
 
-import { Link, useNavigate, useParams } from "react-router-dom";
-import movie from "../services/movie";
+import { useNavigate, useParams } from "react-router-dom";
+import Movie from "../services/movie";
 import { useContext, useEffect, useState } from "react";
 import {
-  Sbutton,
-  Fbutton,
+  Button,
   MovieSection,
   Saling,
   IconStar,
   IconStarFill,
-  Comments,
-  Footer,
-  IconGithub,
-  IconLinkedin
-} from "../components/index";
+  Comments} from "../components/index";
 import { TmdbData } from "../types";
 
 import interaction from "../services/interaction";
 import { ContextoHome } from "../contexts/contextHome";
 
+
 export default function dataMovie() {
   //parametro url
   const { id } = useParams();
 
-  const tmovie = movie.buscar_id;
+ 
   const checkfav = interaction.checkFavorite;
   const removeFav = interaction.removeFavorite;
   const addFav = interaction.saveFavorite;
@@ -34,7 +30,10 @@ export default function dataMovie() {
   
 
   useEffect(() => {
-    tmovie(id, setDatadataMovie);
+    const response: Promise<TmdbData> = Movie.buscar_id(id? id:"");
+    response.then((data) => {
+      setDatadataMovie(data);
+    })
     checkfav(id, setBool);
     setTimeout(() => {
       setLoading(false);
@@ -59,15 +58,16 @@ export default function dataMovie() {
             flexDirection: "column",
           }}
         >
-          <Sbutton onClick={() =>{
+          <Button onClick={() =>{
             navigate(-1)
             
           }
           }>
             Voltar 
-            </Sbutton>
+            </Button>
               
-                <Fbutton
+                <Button
+                bgcolor="#fffff"
                     height="50px"
                     width="100px"
                     onClick={() => {
@@ -80,7 +80,7 @@ export default function dataMovie() {
                     ) : (
                       <IconStar/>
                     )}
-          </Fbutton>
+          </Button>
         </Saling>
 
         <img
@@ -102,16 +102,6 @@ export default function dataMovie() {
 
       <Comments movieId={id}  />
 
-      <Footer>
-        
-        <Link to="https://github.com/claudsaints">
-          <IconGithub/>
-        </Link>
-        <Link to="https://br.linkedin.com/in/claudio-d-5b78b9260">
-          <IconLinkedin/>
-        </Link>
-        @claudsaints
-      </Footer>
     </>
   );
 }
